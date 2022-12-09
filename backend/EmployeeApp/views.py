@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from rest_framework.status import *
@@ -71,3 +70,11 @@ def employee_api(request, _id=0):
         employee = Employees.objects.get(Id=_id)
         employee.delete()
         return JsonResponse("Employee Data Deleted Successfully.", safe=False, status=HTTP_204_NO_CONTENT)
+
+
+@csrf_exempt
+def save_photo(request):
+    from django.core.files.storage import default_storage
+    photo = request.FILES.get('photo')
+    photo_name = default_storage.save(photo.name, photo)
+    return JsonResponse(f"photo '{photo_name}' saved successfully", safe=False)
