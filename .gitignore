@@ -1,3 +1,7 @@
 .idea
 backend/venv
+backend/Photos
 db/
+
+**/__pycache__/
+**/migrations/
