@@ -1,3 +1,5 @@
 .idea
 backend/venv
 db/
+
+**/__pycache__/**
