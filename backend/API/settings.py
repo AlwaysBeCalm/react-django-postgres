@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     # My Apps
-    # 'EmployeeApp',
+    'EmployeeApp',
 
     # External Apps
     'rest_framework',
