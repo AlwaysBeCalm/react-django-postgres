@@ -12,9 +12,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: actions/setup-python@v4
-        with:
-          python-version: '3.9'
+      - name: print current dir
+        run: pwd
 
       - name: Build the Docker image
         run: docker build ./backend/ --file Dockerfile --tag api_django:latest
