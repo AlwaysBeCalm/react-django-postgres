@@ -1,0 +1,29 @@
+name: build docker image for backend (django api)
+on:
+  push:
+    branches: ["backend"]
+  pull_request:
+    branches: ["backend"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Build the Docker image
+        run: docker build ./backend --file Dockerfile --tag api_django:latest
+
+      - name: login to docker hub
+        run: echo ${{ secrets.DOCKER_HUB_TOKEN }} | docker login -u alwaysbecalm --password-stdin
+
+      - name: push the image to docker hub
+        run: docker push api_django:latest
+
+      - name: logout from docker hub
+        run: docker logout
