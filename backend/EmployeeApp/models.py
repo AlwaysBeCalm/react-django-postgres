@@ -13,4 +13,3 @@ class Employees(models.Model):
     Name = models.CharField(max_length=50)
     Department = models.CharField(max_length=50)
     JoiningDate = models.DateField()
-    Photo = models.CharField(max_length=500)

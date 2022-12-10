@@ -35,6 +35,8 @@ export class Employee extends Component {
                 JoiningDate: obj.JoiningDate,
             }
         )
+        if (!obj.Department)
+            this.setState({Department: document.getElementById('department').options[1].value})
     }
 
     addEmployee() {
@@ -209,9 +211,10 @@ export class Employee extends Component {
                                     <div className="p-2 w-50 bd-highlight">
                                         <div className="input-group mb-3">
                                             <span className="input-group-text">Employee Department:</span>
-                                            <select className="form-select"
+                                            <select className="form-select" id={"department"}
                                                     onChange={this.updateDepartment}
                                                     value={Department}>
+                                                <option disabled={true}>select department</option>
                                                 {departments.map(department =>
                                                 <option key={department.Id}>
                                                     {department.Name}

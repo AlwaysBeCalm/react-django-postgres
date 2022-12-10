@@ -11,4 +11,4 @@ class DepartmentSerializer(serializers.ModelSerializer):
 class EmployeesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Employees
-        fields = ("Id", "Name", "Department", "JoiningDate", "Photo")
+        fields = ("Id", "Name", "Department", "JoiningDate")
