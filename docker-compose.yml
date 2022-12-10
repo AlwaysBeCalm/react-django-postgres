@@ -1,0 +1,55 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres
+    container_name: api_postgres
+    hostname: api_postgres
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "HR"]
+      interval: 1s
+      timeout: 1s
+    networks:
+      - api
+    environment:
+      - POSTGRES_DB=HR
+      - POSTGRES_USER=HR
+      - POSTGRES_PASSWORD=HR
+
+  django:
+    image: api_django
+    container_name: api_django
+    hostname: api_django
+    build:
+      context: backend
+      dockerfile: Dockerfile
+    environment:
+      - postgres_host=api_postgres
+    ports:
+      - "8000:8000"
+    networks:
+      - api
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  react:
+    image: api_react
+    container_name: api_react
+    hostname: api_react
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    networks:
+      - api
+    ports:
+      - "3000:3000"
+    depends_on:
+      - django
+      - postgres
+
+networks:
+  api:
+    driver: bridge
