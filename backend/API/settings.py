@@ -87,7 +87,7 @@ WSGI_APPLICATION = 'API.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
+postgres_host = os.environ.get("postgres_host", "localhost")
 DATABASES = {
     # 'default': {
     #     'ENGINE': 'django.db.backends.sqlite3',
@@ -98,7 +98,7 @@ DATABASES = {
         'NAME': 'HR',
         'USER': 'HR',
         'PASSWORD': 'HR',
-        'HOST': 'localhost',
+        'HOST': postgres_host,
         'PORT': "5432",
     }
 }
