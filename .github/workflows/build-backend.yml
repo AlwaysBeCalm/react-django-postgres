@@ -22,7 +22,7 @@ jobs:
         run: echo ${{ secrets.DOCKER_HUB_TOKEN }} | docker login -u alwaysbecalm --password-stdin
 
       - name: push the image to docker hub
-        run: docker push api_django:latest
+        run: docker push alwaysbecalm/api_django:latest
 
       - name: logout from docker hub
         run: docker logout
