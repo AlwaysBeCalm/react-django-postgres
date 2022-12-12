@@ -38,7 +38,7 @@ def department_api(request, _id=0):
     elif request.method == 'DELETE':
         department = Departments.objects.get(Id=_id)
         department.delete()
-        return JsonResponse("Department Data Deleted Successfully.", safe=False, status=HTTP_204_NO_CONTENT)
+        return JsonResponse("Department Data Deleted Successfully.", safe=False, status=HTTP_200_OK)
 
 
 @csrf_exempt
@@ -69,7 +69,7 @@ def employee_api(request, _id=0):
     elif request.method == 'DELETE':
         employee = Employees.objects.get(Id=_id)
         employee.delete()
-        return JsonResponse("Employee Data Deleted Successfully.", safe=False, status=HTTP_204_NO_CONTENT)
+        return JsonResponse("Employee Data Deleted Successfully.", safe=False, status=HTTP_200_OK)
 
 
 @csrf_exempt
