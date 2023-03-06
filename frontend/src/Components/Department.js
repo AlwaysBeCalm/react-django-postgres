@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {api_endpoints} from "../ApiEndpoints";
-
+// we need to use axios for the api calls
 
 export class Department extends Component {
     constructor(props) {

@@ -165,8 +165,9 @@ export class Employee extends Component {
                     </tr>
                     </thead>
                     <tbody>
-                    {employees.map(employee =>
-                        <tr key={employee.Id}>
+                    {React.Children.toArray(
+                        employees.map(employee =>
+                        <tr>
                             <td>{employee.Id}</td>
                             <td>{employee.Name}</td>
                             <td>{employee.Department}</td>
@@ -185,6 +186,7 @@ export class Employee extends Component {
                                 </button>
                             </td>
                         </tr>
+                    )
                     )}
                     </tbody>
                 </table>
