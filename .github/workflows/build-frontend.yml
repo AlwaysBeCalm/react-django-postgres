@@ -19,7 +19,7 @@ jobs:
         run: cd frontend && npm run build
 
       - name: Build the Docker image
-        run: docker build --tag alwaysbecalm/api_react:latest .
+        run: docker build frontend/ --tag alwaysbecalm/api_react:latest
 
       - name: login to docker hub
         run: echo ${{ secrets.DOCKER_HUB_TOKEN }} | docker login -u alwaysbecalm --password-stdin
