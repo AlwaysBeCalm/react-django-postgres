@@ -8,15 +8,15 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./backend
 
     steps:
       - uses: actions/checkout@v3
 
-      - name: print current dir
-        run: pwd
-
       - name: Build the Docker image
-        run: docker build backend/ --tag alwaysbecalm/api_django:latest
+        run: docker build --tag alwaysbecalm/api_django:latest .
 
       - name: login to docker hub
         run: echo ${{ secrets.DOCKER_HUB_TOKEN }} | docker login -u alwaysbecalm --password-stdin
