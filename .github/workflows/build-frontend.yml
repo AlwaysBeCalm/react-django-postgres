@@ -8,16 +8,15 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    working-directory: frontend
 
     steps:
       - uses: actions/checkout@v3
 
       - name: install the libraries
-        run: npm i
+        run: cd frontend && npm i
 
       - name: build the application
-        run: npm run build
+        run: cd frontend && npm run build
 
       - name: Build the Docker image
         run: docker build --tag alwaysbecalm/api_react:latest .
