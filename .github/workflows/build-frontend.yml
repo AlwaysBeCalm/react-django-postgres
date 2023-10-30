@@ -8,15 +8,19 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    working-directory: frontend
 
     steps:
       - uses: actions/checkout@v3
 
-      - name: print current dir
-        run: pwd
+      - name: install the libraries
+        run: npm i
+
+      - name: build the application
+        run: npm run build
 
       - name: Build the Docker image
-        run: docker build frontend/ --tag alwaysbecalm/api_react:latest
+        run: docker build --tag alwaysbecalm/api_react:latest .
 
       - name: login to docker hub
         run: echo ${{ secrets.DOCKER_HUB_TOKEN }} | docker login -u alwaysbecalm --password-stdin
